@@ -13,67 +13,14 @@ class Layanan extends CI_Controller
 	{
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$data['judul'] = 'Layanan';
+        $data['active'] = 'layanan';
+
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('User/layanan/index', $data);
 		$this->load->view('templates/footer');
 	}
 
-	function surat_kelahiran()
-	{
-
-		is_user();
-
-		$data['user'] = $this->db->get_where('user', ['nik' => $this->session->userdata('nik')])->row_array();
-		$data['judul'] = 'Surat Kelahiran';
-
-		$this->load->view('templates/header', $data);
-		$this->load->view('User/layanan/surat_kelahiran');
-		$this->load->view('templates/footer');
-	}
-
-	function in_surat_kelahiran()
-	{
-
-		$default_img = "default.jpg";
-		$nik = $this->session->userdata('nik');
-
-		$kelahiran['nik'] 			= $nik;
-		$kelahiran['hubungan']      = $_POST['hubungan'];
-		$kelahiran['anak']          = $_POST['anak'];
-		$kelahiran['tgl_lahir']     = $_POST['tgl_lahir'];
-		$kelahiran['tempat_lahir']  = $_POST['tempat_lahir'];
-		$kelahiran['jk']            = $_POST['jk'];
-		$kelahiran['ayah']          = $_POST['ayah'];
-		$kelahiran['ibu']           = $_POST['ibu'];
-		$kelahiran['rw']            = $_POST['rw'];
-		$kelahiran['rt']            = $_POST['rt'];
-
-		$config['allowed_types'] = 'jpg|png|jpeg|pdf';
-		$config['max_size']      = 2048;
-		$config['upload_path']   = "./assets/img/surat/kelahiran/";
-
-		$ket_file 			= $this->m_crud->upload_file($nik, $_FILES['ket_file']['name'], "ket_file", $config);
-		$kk_file 			= $this->m_crud->upload_file($nik, $_FILES['kk_file']['name'], "kk_file", $config);
-		$ktp_file 			= $this->m_crud->upload_file($nik, $_FILES['ktp_file']['name'], "ktp_file", $config);
-		$pengantar_file 	= $this->m_crud->upload_file($nik, $_FILES['pengantar_file']['name'], "pengantar_file", $config);
-
-		if ($ket_file != $default_img && $kk_file != $default_img && $ktp_file != $default_img && $pengantar_file != $default_img) {
-			$kelahiran['ket_file'] 	= $config['upload_path'] . $ket_file;
-			$kelahiran['kk_file'] 	= $config['upload_path'] . $kk_file;
-			$kelahiran['ktp_file'] 	= $config['upload_path'] . $ktp_file;
-			$kelahiran['pengantar_file'] = $config['upload_path'] . $pengantar_file;
-
-			$date = date("Y");
-			$jumlah = $this->m_crud->readBy('tbl_kelahiran', array("year(tgl_buat)" => $date, "status !=" => surat_ditolak));
-			$id = count($jumlah) + 1;
-			$kelahiran['id_kelahiran'] = "472.11/$id/438.7.9.14/$date";
-
-			$this->m_crud->save('tbl_kelahiran', $kelahiran);
-			$this->session->set_flashdata('sukses', 'Buat Surat Sukses!');
-			redirect(base_url("layanan/status_layanan"));
-		}
-	}
 	function surat_ktp()
 	{
 
@@ -83,6 +30,8 @@ class Layanan extends CI_Controller
 		$data['warga'] = $this->m_crud->readBy('tbl_warga', ['nik' => $this->session->userdata('nik')])[0];
 
 		$data['judul'] = 'Surat ktp';
+		$data['active'] = 'layanan';
+
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('User/layanan/surat_ktp');
@@ -143,6 +92,7 @@ class Layanan extends CI_Controller
 		$data['warga'] = $this->m_crud->readBy('tbl_warga', ['nik' => $this->session->userdata('nik')])[0];
 
 		$data['judul'] = 'Surat kk';
+		$data['active'] = 'layanan';
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('User/layanan/surat_kk');
@@ -209,6 +159,7 @@ class Layanan extends CI_Controller
 		$data['d_rw'] = DUSUN;
 
 		$data['judul'] = 'Surat SKTM';
+		$data['active'] = 'layanan';
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('User/layanan/surat_sktm');
@@ -272,6 +223,7 @@ class Layanan extends CI_Controller
 		$data['d_rw'] = DUSUN;
 
 		$data['judul'] = 'Surat Domisili';
+		$data['active'] = 'layanan';
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('User/layanan/surat_domisili');
@@ -335,6 +287,7 @@ class Layanan extends CI_Controller
 		$data['d_rw'] = DUSUN;
 
 		$data['judul'] = 'Surat SKCK';
+		$data['active'] = 'layanan';
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('User/layanan/surat_skck');
@@ -386,6 +339,62 @@ class Layanan extends CI_Controller
 			redirect(base_url("layanan/status_layanan"));
 		}
 	}
+	function surat_kelahiran()
+	{
+
+		is_user();
+
+		$data['user'] = $this->db->get_where('user', ['nik' => $this->session->userdata('nik')])->row_array();
+		$data['judul'] = 'Surat Kelahiran';
+		$data['active'] = 'layanan';
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('User/layanan/surat_kelahiran');
+		$this->load->view('templates/footer');
+	}
+
+	function in_surat_kelahiran()
+	{
+
+		$default_img = "default.jpg";
+		$nik = $this->session->userdata('nik');
+
+		$kelahiran['nik'] 			= $nik;
+		$kelahiran['hubungan']      = $_POST['hubungan'];
+		$kelahiran['anak']          = $_POST['anak'];
+		$kelahiran['tgl_lahir']     = $_POST['tgl_lahir'];
+		$kelahiran['tempat_lahir']  = $_POST['tempat_lahir'];
+		$kelahiran['jk']            = $_POST['jk'];
+		$kelahiran['ayah']          = $_POST['ayah'];
+		$kelahiran['ibu']           = $_POST['ibu'];
+		$kelahiran['rw']            = $_POST['rw'];
+		$kelahiran['rt']            = $_POST['rt'];
+
+		$config['allowed_types'] = 'jpg|png|jpeg|pdf';
+		$config['max_size']      = 2048;
+		$config['upload_path']   = "./assets/img/surat/kelahiran/";
+
+		$ket_file 			= $this->m_crud->upload_file($nik, $_FILES['ket_file']['name'], "ket_file", $config);
+		$kk_file 			= $this->m_crud->upload_file($nik, $_FILES['kk_file']['name'], "kk_file", $config);
+		$ktp_file 			= $this->m_crud->upload_file($nik, $_FILES['ktp_file']['name'], "ktp_file", $config);
+		$pengantar_file 	= $this->m_crud->upload_file($nik, $_FILES['pengantar_file']['name'], "pengantar_file", $config);
+
+		if ($ket_file != $default_img && $kk_file != $default_img && $ktp_file != $default_img && $pengantar_file != $default_img) {
+			$kelahiran['ket_file'] 	= $config['upload_path'] . $ket_file;
+			$kelahiran['kk_file'] 	= $config['upload_path'] . $kk_file;
+			$kelahiran['ktp_file'] 	= $config['upload_path'] . $ktp_file;
+			$kelahiran['pengantar_file'] = $config['upload_path'] . $pengantar_file;
+
+			$date = date("Y");
+			$jumlah = $this->m_crud->readBy('tbl_kelahiran', array("year(tgl_buat)" => $date, "status !=" => surat_ditolak));
+			$id = count($jumlah) + 1;
+			$kelahiran['id_kelahiran'] = "472.11/$id/438.7.9.14/$date";
+
+			$this->m_crud->save('tbl_kelahiran', $kelahiran);
+			$this->session->set_flashdata('sukses', 'Buat Surat Sukses!');
+			redirect(base_url("layanan/status_layanan"));
+		}
+	}
 	function surat_kematian()
 	{
 
@@ -402,6 +411,7 @@ class Layanan extends CI_Controller
 		$data['d_rw'] = DUSUN;
 
 		$data['judul'] = 'Surat Kematian';
+		$data['active'] = 'layanan';
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('User/layanan/surat_kematian');
@@ -470,6 +480,7 @@ class Layanan extends CI_Controller
 		$data['d_rw'] = DUSUN;
 
 		$data['judul'] = 'Surat Pindah';
+		$data['active'] = 'layanan';
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('User/layanan/surat_pindah');

@@ -17,7 +17,7 @@
 <footer class="main-footer bg-dark mt-5" style="height:300px;">
 
     <div class="container my-auto">
-        <div class="container text-center py-3"><img src="assets/img/home/home.png" class="img-fluid" alt="..."
+        <div class="container text-center py-3"><img src="<?= base_url();?>assets/img/home/home.png" class="img-fluid" alt="..."
                 style="height:70px;"><span class="text-muted">© All rights reserved. Made with <span
                     class="text-danger">Love</span> by </span><span class="text-muted">Muhammad Nabil</span>
         </div>

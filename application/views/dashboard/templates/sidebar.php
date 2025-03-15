@@ -38,7 +38,7 @@
             <div class="sidebar-heading">
                 Pengajuan
             </div>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
@@ -64,7 +64,7 @@
                         <a class="collapse-item" href="<?= base_url('dashboard/surat/lihat/kematian'); ?>"><i
                                 class="icon-dead"></i> Surat Kematian</a>
                     </div>
-                </div>
+                </div> -->
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('layanan/status_layanan'); ?>">
                     <i class="fas fa-fw fa-user"></i>

@@ -14,6 +14,10 @@
 	color: orangered;
 }
 
+.navbar-nav a .active {
+	color: orangered;
+}
+
 .navbar-nav-login a {
 	margin-right: 20px;
 	margin-left: 10px;

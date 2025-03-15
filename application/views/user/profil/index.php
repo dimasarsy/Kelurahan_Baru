@@ -29,7 +29,7 @@
                             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                 <i class="fa fa-id-card text-warning"></i>
                                 <?php if($warga->ktp_file == null){ ?>
-                                <p class="mb-0">Belum Diisi</p>
+                                <p class="mb-0 text-danger">Belum Di Upload</p>
                                 <?php } else{ ?>
                                 <p class="mb-0"><a href="<?=base_url('./assets/img/profile/').$warga->ktp_file?>"
                                         class="text-decoration-none" target="_blank">Kartu Tanda Penduduk (KTP)</a>
@@ -39,7 +39,7 @@
                             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                 <i class="fa fa-file-text" style="color: #333333;"></i>
                                 <?php if($warga->kk_file == null){ ?>
-                                <p class="mb-0">Belum Diisi</p>
+                                <p class="mb-0 text-danger">Belum Di Upload</p>
                                 <?php } else{ ?>
                                 <p class="mb-0"><a href="<?=base_url('./assets/img/profile/').$warga->kk_file?>"
                                         class="text-decoration-none" target="_blank">Kartu Keluarga (KK)</a></p>
@@ -85,8 +85,12 @@
                                 <p class="mb-0">Tanggal Lahir</p>
                             </div>
                             <div class="col-sm-9">
+                                <?php if($warga->tgl_lahir != null):?>
                                 <p class="text-muted mb-0">
                                     <?=date("d M Y",strtotime($warga->tgl_lahir))?></p>
+                                <?php else:?>
+                                    <p></p>
+                                <?php endif;?>
                             </div>
                         </div>
                         <hr>
@@ -95,9 +99,13 @@
                                 <p class="mb-0">Jenis Kelamin</p>
                             </div>
                             <div class="col-sm-9">
+                                <?php if($warga->jk != null):?>
                                 <p class="text-muted mb-0">
                                     <?=($warga->jk=='L'?'Laki-laki':'Perempuan')?>
                                 </p>
+                                <?php else:?>
+                                    <p></p>
+                                <?php endif;?>
                             </div>
                         </div>
                         <hr>
@@ -106,8 +114,12 @@
                                 <p class="mb-0">Alamat</p>
                             </div>
                             <div class="col-sm-9">
+                                <?php if($warga->alamat != null):?>
                                 <p class="text-muted mb-0"><?=$warga->alamat?> RT.<?=sprintf("%03d",$warga->rt)?> /
                                     RW.<?=sprintf("%03d",$warga->rw)?> </p>
+                                <?php else:?>
+                                    <p></p>
+                                <?php endif;?>
                             </div>
                         </div>
                         <hr>

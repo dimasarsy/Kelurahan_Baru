@@ -26,7 +26,23 @@
                             <th style='width:60px'>Action</th>
                         </tr>
                     </thead>
-
+                    <!-- <tbody>
+                        <?php $i=1; foreach ($baru as $v): ?>
+                            <tr>
+                                <td><?=$v->id_ktp?></td>
+                                <td><?=$v->nik?></td>
+                                <td><?=$v->name?></td>
+                                <td><?=$v->tempat_lahir?>,
+                                    <?=date("d M 'y",strtotime($v->tgl_lahir))?></td>
+                                <td><?=($v->jk=='L'?'Laki-laki':'Perempuan')?></td>
+                                <td><?=$v->tgl_buat?></td>
+                                <td class="tindakan">
+                                    <a href="<?=base_url("dashboard/surat/detail/$surat/$v->id")?>"
+                                        class="btn btn-info btn-fill" title="Lihat">Lihat</a>
+                                </td>
+                                </tr>
+                        <?php endforeach; ?>
+                    </tbody> -->
                 </table>
             </div>
         </div>
