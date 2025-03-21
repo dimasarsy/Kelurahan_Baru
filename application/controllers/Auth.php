@@ -110,7 +110,7 @@ class Auth extends CI_Controller
                 'image' => 'default.jpg',
 
             ];
-            $this->db->insert('tbl_warga', $data);
+            // $this->db->insert('tbl_warga', $data);
 
             // $this->db->insert('user_token', $user_token);
 

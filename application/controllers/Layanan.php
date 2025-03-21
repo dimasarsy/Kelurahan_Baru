@@ -555,17 +555,39 @@ class Layanan extends CI_Controller
 
 	function managemen_user()
 	{
-		$data['user'] = $this->db->get_where('user', ['nik' => $this->session->userdata('nik')])->row_array();
-		$data['warga'] = $this->m_crud->readBy('tbl_warga', ['nik' => $this->session->userdata('nik')])[0];
+		$data['title'] = 'Warga';
+		$title['judul'] = 'Warga';
 
-
-		$data['title'] = 'My Profile';
-		$title['judul'] = 'My Profile';
+		$data['warga'] = $this->m_crud->read('tbl_warga');
+		// $this->db->get('user')
 
 		$this->load->view('dashboard/templates/header', $title);
 		$this->load->view('dashboard/templates/sidebar_admin.php', $data);
 		$this->load->view('dashboard/templates/topbar', $data);
 		$this->load->view('dashboard/user/view_users', $data);
+		$this->load->view('dashboard/templates/footer', $data);
+	}
+
+	
+	function detail_user($id)
+	{
+		// $tbl = TABEL[$surat];
+		// $caption = CAPTION[$surat];
+		// $view = array('ktp' => 'detail_ktp', 'kk' => 'detail_kk', 'sktm' => 'detail_sktm', 'domisili' => 'detail_domisili', 'pindah' => 'detail_pindah', 'skck' => 'detail_skck', 'kelahiran' => 'detail_kelahiran', 'kematian' => 'detail_kematian');
+
+		$title['judul'] = "Detail Warga";
+		// $data['warga'] = $this->m_crud->readBy('tbl_warga', array('id' => $id));
+		
+		$warga = $this->m_crud->readBy('tbl_warga', array('id' => $id));
+		$data['warga'] = $warga[0];
+		// $data['judul'] = $title['judul'];
+		// $data['dusun'] = DUSUN;
+		// $data['surat'] = $surat;
+
+		$this->load->view('dashboard/templates/header', $title);
+		$this->load->view('dashboard/templates/sidebar_admin', $title);
+		$this->load->view('dashboard/templates/topbar', $data);
+		$this->load->view("dashboard/user/detail_user", $data);
 		$this->load->view('dashboard/templates/footer', $data);
 	}
 
