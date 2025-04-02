@@ -116,6 +116,10 @@ class m_crud extends CI_Model
 			return $error['message'];
 		}
 	}
+	function deleteBerita($id_terbaru) {
+		$this->db->where('id_terbaru', $id_terbaru);
+		$this->db->delete('tbl_terbaru');
+	}
 
 	function hard_delete($table, $where)
 	{

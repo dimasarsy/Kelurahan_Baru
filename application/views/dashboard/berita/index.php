@@ -6,7 +6,7 @@
                 <div class="col-12">
                     <h1>Daftar Berita</h1>
 
-                    <a href="<?=base_url("dashboard/berita/form")?>" class="btn btn-success btn-fill pull-right"
+                    <a href="<?=base_url("dashboard/berita/tambah")?>" class="btn btn-success btn-fill pull-right"
                         style="margin-top: -25px"><i class="fa fa-plus" aria-hidden="true"></i>
                         <href> Tambah
                     </a><br>
@@ -28,32 +28,37 @@
                                                     <th>Judul</th>
                                                     <th>Desc</th>
                                                     <th>Foto</th>
-                                                    <th>Kategori</th>
                                                     <th>Tanggal Berita</th>
-                                                    <th>Info</th>
+                                                    <th>Penulis</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php $i=1; foreach ($berita as $v): ?>
-                                                <tr>
-                                                    <td><?=$v->id?></td>
-                                                    <td><?=$v->title?></td>
-                                                    <td><?=substr($v->desc,0,130)?>...</td>
-                                                    <td>
-                                                        <img src="<?=base_url('assets/img/berita/').$v->photo?>"
-                                                            width="100" height="100">
-                                                    </td>
-                                                    <td><?=$v->category?></td>
-                                                    <td><?=$v->date?></td>
-                                                    <td class="tindakan">
-                                                        <a href="<?=base_url("dashboard/berita/detail/$v->id")?>"
-                                                            class="btn btn-info btn-fill" title="Lihat">Lihat</a>
+                                                    <tr>
+                                                        <td><?=$i++;?></td>
+                                                        <td><?=$v->judul?></td>
+                                                        <td><?=$v->deskripsi?></td>
+                                                        <td>
+                                                            <img src="<?=base_url('./assets/img/berita/').$v->gambar?>" alt="avatar" class="img-fluid" style="width: 200px;">
+                                                        </td>                  
+                                                        <td><?=$v->created_at?></td>
+                                                        <td><?=$v->penulis?></td>
+                                                        
+                                                        <td class="tindakan">
+                                                            <a href="<?=base_url("dashboard/berita/detail/$v->id_terbaru")?>"
+                                                                class="btn btn-sm btn-info" title="Lihat"><i
+                                                                    class="fas fa-eye"></i></a><br>
 
-                                                        <button style="font-size:13px;"
-                                                            onclick="hapus('<?=base_url("dashboard/berita/hapus/$v->id")?>')"
-                                                            class="btn btn-danger">Hapus</button>
-                                                    </td>
-                                                </tr>
+                                                            <a href="<?=base_url("dashboard/berita/edit/$v->id_terbaru")?>"
+                                                                 class="btn btn-sm btn-warning" title="Edit"><i
+                                                                    class="fas fa-edit"></i></a>
+                                                                    
+                                                            <a href="<?=base_url("dashboard/berita/delete/$v->id_terbaru")?>" onclick="isconfirm()"
+                                                            class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+
+                                                        </td>
+                                                    </tr>
                                                 <?php endforeach; ?>
                                             </tbody>
                                         </table>
@@ -77,3 +82,14 @@
 </body>
 
 </html>
+
+<script>
+    function isconfirm(){
+
+        if(!confirm('Apakah Anda Yakin Menghapus ?')){
+            event.preventDefault();
+            return;
+        }
+        return true;
+    }
+</script>
