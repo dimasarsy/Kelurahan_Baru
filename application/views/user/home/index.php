@@ -103,9 +103,11 @@
             <div class="col-md-8 my-auto">
                 <div class="card-body mx-5">
                     <h4 class="card-title">Sambutan Lurah </h4>
-                    <p class="card-text"><small class="text-muted">“Segala Puji Syukur kita panjatkan kehadirat Allah SWT, Tuhan Yang Maha Kuasa, yang dengan rahmat-Nya telah mengantarkan Institusi ini menjadi sebuah Institusi yang semakin eksis sesuai dengan visi dan misi Pemerintah Kota Bandung. Dalam menghadapi tantangan zaman, terutama menghadapi penyelenggaraan pemerintahan dalam rangka pelayanan publik sangat memerlukan Good Governance yang siap menjamin transparansi, efisiensi dan efektivitas penyelenggaraan pemerintahan melalui Sistem Informasi (SI).
+                    <p class="card-text">
+                        <medium class="text-muted">“Segala Puji Syukur kita panjatkan kehadirat Allah SWT, Tuhan Yang Maha Kuasa, yang dengan rahmat-Nya telah mengantarkan Institusi ini menjadi sebuah Institusi yang semakin eksis sesuai dengan visi dan misi Pemerintah Kota Bandung. Dalam menghadapi tantangan zaman, terutama menghadapi penyelenggaraan pemerintahan dalam rangka pelayanan publik sangat memerlukan Good Governance yang siap menjamin transparansi, efisiensi dan efektivitas penyelenggaraan pemerintahan melalui Sistem Informasi (SI).
                             Sebagai informasi kepada masyarakat sehubungan dengan telah aktifnya content subdomain kelurahan Antapani Kidul, kami berharap kedepan agar masyarakat memahami tentang keberadaan Kantor Kelurahan Antapani Kidul Kota Bandung yang telah membuat beberapa kebijakan, kegiatan, program serta rencana strategis yang disusun sesuai dengan kebutuhan untuk masyarakat di bidang teknologi informasi untuk pelayanan dalam rangka pengembangan dan penerapan e-Government sebagai bagian dari kebijakan dan strategi nasional pemerintah guna mewujudkan kepemerintahan yang baik (good governance).
-                            Oleh karena itu, kritik dan saran yang positif dan membangun sangatlah kami harapkan, agar kita dapat mencapai apa yang telah direncanakan dan kita cita-citakan bersama, guna membangun daerah yang kita cintai ini agar lebih baik dan berkembang sebagaimana harapan kita bersama.”</small></p>
+                            Oleh karena itu, kritik dan saran yang positif dan membangun sangatlah kami harapkan, agar kita dapat mencapai apa yang telah direncanakan dan kita cita-citakan bersama, guna membangun daerah yang kita cintai ini agar lebih baik dan berkembang sebagaimana harapan kita bersama.”</medium>
+                    </p>
                 </div>
             </div>
         </div>
