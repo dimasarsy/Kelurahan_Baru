@@ -13,7 +13,7 @@ class Layanan extends CI_Controller
 	{
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$data['judul'] = 'Layanan';
-        $data['active'] = 'layanan';
+		$data['active'] = 'layanan';
 
 
 		$this->load->view('templates/header', $data);
@@ -568,7 +568,7 @@ class Layanan extends CI_Controller
 		$this->load->view('dashboard/templates/footer', $data);
 	}
 
-	
+
 	function detail_user($id)
 	{
 		// $tbl = TABEL[$surat];
@@ -577,7 +577,7 @@ class Layanan extends CI_Controller
 
 		$title['judul'] = "Detail Warga";
 		// $data['warga'] = $this->m_crud->readBy('tbl_warga', array('id' => $id));
-		
+
 		$warga = $this->m_crud->readBy('tbl_warga', array('id' => $id));
 		$data['warga'] = $warga[0];
 		// $data['judul'] = $title['judul'];

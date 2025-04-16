@@ -41,17 +41,22 @@
         <div id="label">
             <h4>Data Diri</h4>
         </div>
-        <div class="tab">
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="nik" placeholder="NIK" value="<?= $user['nik']; ?>"
-                    disabled required>
-                <label for="floatingInput">NIK <span class="text-danger">*</span></label>
-            </div>
-
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="name" placeholder="Nama" value="<?= $user['name']; ?>"
-                    disabled required>
-                <label for="floatingPassword">Nama <span class="text-danger">*</span></label>
+        <div class="tab m-3">
+            <div class="row g-2">
+                <div class="col-md">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="nik" placeholder="NIK" value="<?= $user['nik']; ?>"
+                            disabled required>
+                        <label for="floatingInput">NIK <span class="text-danger">*</span></label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="name" placeholder="Nama" value="<?= $user['name']; ?>"
+                            disabled required>
+                        <label for="floatingPassword">Nama <span class="text-danger">*</span></label>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

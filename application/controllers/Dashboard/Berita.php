@@ -16,16 +16,16 @@ class Berita extends CI_Controller
 		$data['berita'] = $this->m_crud->read('tbl_terbaru');
 
 		$this->load->view('dashboard/templates/header', $data);
-        $this->load->view('dashboard/templates/sidebar_admin.php', $data);
-        $this->load->view('dashboard/templates/topbar', $data);
+		$this->load->view('dashboard/templates/sidebar_admin.php', $data);
+		$this->load->view('dashboard/templates/topbar', $data);
 		$this->load->view('dashboard/berita/index', $data);
-        $this->load->view('dashboard/templates/footer', $data);
+		$this->load->view('dashboard/templates/footer', $data);
 	}
 
 	function detail($id_terbaru)
 	{
 		$title['judul'] = "Detail Berita";
-		
+
 		$berita = $this->m_crud->readBy('tbl_terbaru', array('id_terbaru' => $id_terbaru));
 		$data['berita'] = $berita[0];
 
@@ -59,12 +59,13 @@ class Berita extends CI_Controller
 		$berita['judul_seo']    = $_POST['judul_seo'];
 		$berita['judul']  		= $_POST['judul'];
 		$berita['deskripsi']    = $_POST['deskripsi'];
-		
+
 		$config['allowed_types'] = 'jpg|png|jpeg';
 		$config['max_size']      = 2048;
 		$config['upload_path']   = "./assets/img/berita/";
 
-		$gambar 	= $this->m_crud->upload_file($nik, $_FILES['gambar']['name'], "gambar", $config);
+		$gambar 	= $this->m_crud->upload_file($penulis, $_FILES['gambar']['name'], "gambar", $config);
+		$default_img = "default.jpg";
 
 		if ($gambar != $default_img) {
 			$berita['gambar'] 	= $gambar;
@@ -94,51 +95,51 @@ class Berita extends CI_Controller
 	{
 
 		// $penulis = $this->session->userdata('name');
-		
+
 		// $config['allowed_types'] = 'jpg|png|jpeg';
 		// $config['max_size']      = 2048;
 		// $config['upload_path']   = "./assets/img/berita/";
-		
+
 		$id_terbaru = $this->input->post('id_terbaru');
 
 		$data = array(
-            'penulis' => $this->session->userdata('name'),
-            'judul_seo' => $this->input->post('judul_seo'),
-            'judul' => $this->input->post('judul'),
-            'deskripsi' => $this->input->post('deskripsi'),
-        );
+			'penulis' => $this->session->userdata('name'),
+			'judul_seo' => $this->input->post('judul_seo'),
+			'judul' => $this->input->post('judul'),
+			'deskripsi' => $this->input->post('deskripsi'),
+		);
 
 		// $berita['penulis'] 		= $penulis;
 		// $berita['judul_seo']    = $_POST['judul_seo'];
 		// $berita['judul']  		= $_POST['judul'];
 		// $berita['deskripsi']    = $_POST['deskripsi'];
-	
+
 		$upload_image = $_FILES['gambar']['name'];
-		
+
 
 		if ($upload_image) {
-            $config['allowed_types'] = 'gif|jpg|png';
-            $config['max_size']      = '2048';
-            $config['upload_path'] = './assets/img/berita/';
+			$config['allowed_types'] = 'gif|jpg|png';
+			$config['max_size']      = '2048';
+			$config['upload_path'] = './assets/img/berita/';
 
-            $this->load->library('upload', $config);
-            $this->upload->initialize($config);
+			$this->load->library('upload', $config);
+			$this->upload->initialize($config);
 
-            if ($this->upload->do_upload('gambar')) {
-                $old_image = $data['tbl_terbaru']['gambar'];
-                if ($old_image != 'default.jpg') {
-                    unlink(FCPATH . './assets/img/berita/' . $old_image);
-                }
-                $new_image = $this->upload->data('file_name');
-                $this->db->set('gambar', $new_image);
-            } else {
-                var_dump($this->upload->display_errors());
-            }
-        }
+			if ($this->upload->do_upload('gambar')) {
+				$old_image = $data['tbl_terbaru']['gambar'];
+				if ($old_image != 'default.jpg') {
+					unlink(FCPATH . './assets/img/berita/' . $old_image);
+				}
+				$new_image = $this->upload->data('file_name');
+				$this->db->set('gambar', $new_image);
+			} else {
+				var_dump($this->upload->display_errors());
+			}
+		}
 
 		$this->db->set($data);
-        $this->db->where('id_terbaru', $id_terbaru);
-        $this->db->update('tbl_terbaru');
+		$this->db->where('id_terbaru', $id_terbaru);
+		$this->db->update('tbl_terbaru');
 
 		$this->session->set_flashdata('sukses', 'Edit Berita Sukses!');
 		redirect(base_url("dashboard/berita"));
@@ -149,5 +150,4 @@ class Berita extends CI_Controller
 		$this->m_crud->deleteBerita($id_terbaru);
 		redirect(base_url('dashboard/berita'));
 	}
-
 }
