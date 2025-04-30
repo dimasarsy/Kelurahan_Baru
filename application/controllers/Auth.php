@@ -66,7 +66,13 @@ class Auth extends CI_Controller
 
     public function registration()
     {
-
+        $data['d_jk'] = JK;
+        $data['d_goldar'] = GOLDAR;
+        $data['d_agama'] = AGAMA;
+        $data['d_pendidikan'] = PENDIDIKAN;
+        $data['d_pekerjaan'] = PEKERJAAN;
+        $data['d_rw'] = DUSUN;
+        
         if ($this->session->userdata('email')) {
             redirect('user');
         }
@@ -108,9 +114,20 @@ class Auth extends CI_Controller
                 'nik' => $this->input->post('nik', true),
                 'name' => htmlspecialchars($this->input->post('name', true)),
                 'image' => 'default.jpg',
-
+                'no_telp' => $this->input->post('no_telp'),
+                'tempat_lahir' => $this->input->post('tempat_lahir'),
+                'tgl_lahir' => $this->input->post('tgl_lahir'),
+                'jk' => $this->input->post('jk'),
+                'goldar' => $this->input->post('goldar'),
+                'pendidikan' => $this->input->post('pendidikan'),
+                'pekerjaan' => $this->input->post('pekerjaan'),
+                'agama' => $this->input->post('agama'),
+                'kawin' => $this->input->post('kawin'),
+                'alamat' => $this->input->post('alamat'),
+                'rw' => $this->input->post('rw'),
+                'rt' => $this->input->post('rt'),
             ];
-            // $this->db->insert('tbl_warga', $data);
+            $this->db->insert('tbl_warga', $data);
 
             // $this->db->insert('user_token', $user_token);
 

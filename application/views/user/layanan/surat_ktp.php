@@ -66,51 +66,58 @@
         <div class="tab mb-3">
             <div class="row g-2">
                 <div class="col-md">
-                    <div class="form-floating">
-                        <input class="form-control" type="date" name="tgl_lahir" requiredd>
-                        <label for="floatingInputGrid">Tanggal Lahir <span class="text-danger">*</span> </label>
+                    <div class="form-floating mb-3">
+                        <input class="form-control" type="date" name="tgl_lahir"
+                            value="<?= $warga->tgl_lahir ?>" placeholder="Tanggal Lahir" required disabled>
+                        <label for="floatingInput">Tanggal Lahir <span class="text-danger">*</span></label>
                     </div>
                 </div>
                 <div class="col-md">
                     <div class="form-floating mb-3">
-                        <input class="form-control" type="text" name="tempat_lahir" placeholder="Tempat Lahir" value=""
-                            requiredd>
+                        <input class="form-control" type="text" name="tempat_lahir" placeholder="Tempat Lahir" value="<?= $biodata['tempat_lahir']; ?>"
+                            disabled requiredd>
                         <label for="floatingInput">Tempat Lahir <span class="text-danger">*</span></label>
                     </div>
                 </div>
                 <div class="col-md">
                     <div class="form-floating">
+                        <input class="form-control" type="text" name="jk" placeholder="Nama Ibu" value="<?= $biodata['jk']; ?>"
+                            disabled requiredd>
+                        <label for="floatingSelectGrid">Jenis Kelamin <span class="text-danger">*</span></label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
                         <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example"
-                            name="jk" requiredd>
-                            <option selected>-- Pilih salah satu --</option>
-                            <option value="L">Laki-laki</option>
-                            <option value="P">Perempuan</option>
+                            name="jk" disabled requiredd>
+                            <?php if($biodata['jk'] == 'L'):?>
+                                <option value="L">Laki-Laki</option>
+                            <?php else:?>
+                                <option value="P">Perempuan</option>
+                            <?php endif;?>
                         </select>
                         <label for="floatingSelectGrid">Jenis Kelamin <span class="text-danger">*</span></label>
                     </div>
                 </div>
             </div>
             <div class="form-floating mb-3">
-                <input class="form-control" type="text" name="alamat" placeholder="Nama Ibu" value="" requiredd>
+                <input class="form-control" type="text" name="alamat" placeholder="Nama Ibu" value="<?= $biodata['alamat']; ?>"
+                disabled requiredd>
                 <label for="floatingPassword">Alamat <span class="text-danger">*</span> </label>
             </div>
-            <div class="row g-2">
+            <div class="row g-2 mb-3">
                 <div class="col-md">
                     <div class="form-floating">
-                        <input class="form-control" type="number" min="1" name="rt" placeholder="RT" requiredd>
+                        <input class="form-control" type="number" min="1" name="rt" placeholder="RT" value="<?= $biodata['rt']; ?>"
+                            disabled requiredd>
                         <label for="floatingInputGrid">RT <span class="text-danger">*</span> </label>
                     </div>
                 </div>
-                <div class="col-md mb-3">
+                <div class="col-md">
                     <div class="form-floating">
-                        <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example"
-                            name="rw" requiredd>
-                            <option selected>-- Pilih salah satu --</option>
-                            <option value="1">Pager</option>
-                            <option value="2">Ngumbuk</option>
-                            <option value="3">Bendet</option>
-                        </select>
-                        <label for="floatingSelectGrid">Dusun <span class="text-danger">*</span> </label>
+                        <input class="form-control" type="number" min="1" name="rw" placeholder="RW" value="<?= $biodata['rw']; ?>"
+                            disabled requiredd>
+                        <label for="floatingInputGrid">RW <span class="text-danger">*</span> </label>
                     </div>
                 </div>
             </div>

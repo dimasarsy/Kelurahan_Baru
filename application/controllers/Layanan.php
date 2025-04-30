@@ -27,6 +27,7 @@ class Layanan extends CI_Controller
 		is_user();
 
 		$data['user'] = $this->db->get_where('user', ['nik' => $this->session->userdata('nik')])->row_array();
+		$data['biodata'] = $this->db->get_where('tbl_warga', ['nik' => $this->session->userdata('nik')])->row_array();
 		$data['warga'] = $this->m_crud->readBy('tbl_warga', ['nik' => $this->session->userdata('nik')])[0];
 
 		$data['judul'] = 'Surat ktp';
@@ -44,15 +45,16 @@ class Layanan extends CI_Controller
 		$default_img = "default.jpg";
 		$nik = $this->session->userdata('nik');
 		$name = $this->session->userdata('name');
+		$biodata = $this->db->get_where('tbl_warga', ['nik' => $this->session->userdata('nik')])->row_array();
 
 		$ktp['nik'] 			= $nik;
 		$ktp['name'] 			= $name;
-		$ktp['tgl_lahir']     = $_POST['tgl_lahir'];
-		$ktp['tempat_lahir']  = $_POST['tempat_lahir'];
-		$ktp['jk']            = $_POST['jk'];
-		$ktp['alamat']   		= $_POST['alamat'];
-		$ktp['rt']            = $_POST['rt'];
-		$ktp['rw']            = $_POST['rw'];
+		$ktp['tgl_lahir']    	= $biodata['tgl_lahir'];
+		$ktp['tempat_lahir']  	= $biodata['tempat_lahir'];
+		$ktp['jk']            	= $biodata['jk'];
+		$ktp['alamat']   		= $biodata['alamat'];
+		$ktp['rt']            	= $biodata['rt'];
+		$ktp['rw']            	= $biodata['rw'];
 		$ktp['ayah']          = $_POST['ayah'];
 		$ktp['ibu']           = $_POST['ibu'];
 

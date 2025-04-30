@@ -73,7 +73,7 @@
                                     <td><?=$v->nik?></td>
                                     <td><?=$v->name?></td>
                                     <td><?=$v->tempat_lahir?>, <?=date("d M 'y",strtotime($v->tgl_lahir))?></td>
-                                    <td><?=($v->jk=='l'?'Laki-laki':'Perempuan')?></td>
+                                    <td><?=($v->jk=='L'?'Laki-laki':'Perempuan')?></td>
                                     <td><?=$v->tgl_buat?></td>
 
                                     <td>
